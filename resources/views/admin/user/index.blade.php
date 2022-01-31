@@ -212,7 +212,7 @@
 						    <img src="{{ asset('asset/image/imageicon.png') }}" alt="User Image" class="rounded-circle">
                                     <label for="emp_image" class="edit">
                                         <i class="fas fa-pencil-alt"></i>
-                                        <input id="user_image" type="file" style="display: none" name="user_image">
+                                        <input type="file" style="display: none" name="user_image" id="user_image">
                                         <span id="user_image_error" style="color: red"></span>
                                     </label>
                         </div>
@@ -245,7 +245,7 @@
                         <div class="col-md-6">
                            <div class="form-group">
                                <label class="col-form-label">Password</label>
-                               <input class="form-control" type="password" placeholder="123456" name="paswword" id="paswword">
+                               <input class="form-control" type="password" placeholder="123456" name="password" id="password">
 							   <span id="paswword_error" style="color: red"></span>
                            </div>
                         </div>
