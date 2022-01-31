@@ -22,7 +22,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('admin/login', [AdminAuthController::class, 'index'])->name('admin.login');
+Route::get('/', [AdminAuthController::class, 'index'])->name('admin.login');
 Route::post('admin/login', [AdminAuthController::class, 'store'])->name('admin.login.store');
 
 
