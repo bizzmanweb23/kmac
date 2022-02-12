@@ -163,7 +163,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{route ('admin.employee.index')}}">
                             <span class="icon-menu feather-icon">
                               <i class="fa fa-users"></i>
                             </span>

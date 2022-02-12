@@ -31,7 +31,7 @@
                       <h4 class="card-title mb-0">My Profile</h4>
                       <div class="card-options"><a class="card-options-collapse" href="javascript:;" data-bs-toggle="card-collapse" data-bs-original-title="" title=""><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="javascript:;" data-bs-toggle="card-remove" data-bs-original-title="" title=""><i class="fe fe-x"></i></a></div>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body viewDetails">
                       <form>
 						<div class="profile-title">
 							<div class="media ad-profile2-img">                        
@@ -90,7 +90,6 @@
              
              
               </div>
-@endsection
     <!-- this is large modal -->
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -185,16 +184,10 @@
           </div>
         </div>
       </div>
-	
-    <!-- Script Start -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-	<script src="assets/js/swiper.min.js"></script>
-    <!-- Page Specific -->
-    <script src="assets/js/nice-select.min.js"></script>
-    <!-- Custom Script -->
-    <script src="assets/js/custom.js"></script>
-</body>
-
-</html>
+<div id="user_loder" style="display: none">
+        @include('admin.loader.index')
+    </div>
+@section('javascript')
+@include('admin.js.user')
+@endsection
+@endsection

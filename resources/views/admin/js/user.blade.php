@@ -1,6 +1,6 @@
  <script>
  $('body').on('click','#user_details',function() {
-	   alert ('hello');
+	   //alert ('hello');
         var form = $('#user_form')[0];
         var data = new FormData(form);
 
@@ -43,7 +43,7 @@
                     $('#email_address_error').html(err.email_address)
                     $('#contact_number_error').html(err.contact_number)
                     $('#paswword_error').html(err.paswword)
-                    $('#confirm_password_error').html(err.confirm_password)
+                    $('#gender_error').html(err.gender)
                     $('#address_error').html(err.address)
                     $('#city_error').html(err.city)
                     $('#country_error').html(err.country)
@@ -63,8 +63,8 @@
 					if (err.paswword) {
                         toastr.error(err.paswword);
                     }
-					if (err.confirm_password) {
-                        toastr.error(err.confirm_password);
+					if (err.gender) {
+                        toastr.error(err.gender);
                     }
 					if (err.address) {
                         toastr.error(err.address);
@@ -90,10 +90,71 @@
         $('#email_address_error').html('')
         $('#contact_number_error').html('')
         $('#paswword_error').html('')
-        $('#confirm_password_error').html('')
+        $('#gender_error').html('')
         $('#address_error').html('')
         $('#city_error').html('')
         $('#country_error').html('')
         $('#bio_info_error').html('')
     })
+	
+	$('body').on('click','#viewProfile',function(){
+		var id= $(this).attr('rel');
+		$('#viewUserModal').modal('show');
+		  $.ajax({
+                   url: "{{ route('admin.view_user_details') }}",
+                   type: "get",
+                   data: 
+	               {
+                        "_token": "{{ csrf_token() }}",
+                        id: id
+                   },
+                   dataType: "html",
+                   beforeSend: function() 
+	               {
+                        $('#user_loder').show()
+                   },
+                   success: function(data) 
+	                {
+                        $('#user_loder').hide();
+                        $('#edit_user_form').html(data);
+                        $('#viewUserModal').modal('show');			
+                    },
+                    error: function() 
+	                {
+                        $('#user_loder').hide();
+                        alert("Fail")
+                    }
+                })
+	})
+	
+	$('body').on('click','',function()
+	{
+	var id=$(this).attr('rel');
+    $.ajax({
+    url: "",
+    type: "get",
+    data: 
+	{
+        "_token": "{{ csrf_token() }}",
+         id: id
+    },
+    dataType: "html",
+    beforeSend: function() 
+	{
+        $('#user_loder').show()
+    },
+    success: function(data) 
+	{
+        $('#user_loder').hide();
+        $('#viewDetails').html(data);
+        $('#viewBrokerModal').modal('show');		
+		//alert("Pass")	
+    },
+    error: function() 
+	{
+        $('#user_loder').hide();
+        alert("Fail")
+    }
+    })
+	});
 </script>

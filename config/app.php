@@ -232,7 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
-        'Helper'    => App\Helper\AppHelper::class,
+        'Helper'    => App\Helpers\AppHelper::class,
 
     ],
 

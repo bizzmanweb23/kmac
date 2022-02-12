@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Helper;
 use Illuminate\Http\Request;
 
 class AdminUserController extends Controller
@@ -14,7 +16,8 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        return view('admin.user.index');
+		$data['result']=User::select('*')->get();
+        return view('admin.user.index',$data);
     }
 
     /**
@@ -38,21 +41,21 @@ class AdminUserController extends Controller
         $user_data = $request->validate([
 			'user_image'        => ['required'],
             'user_name'         => ['required', 'string'],
-            'email_address'     => ['required', 'email', 'max:255', 'unique:user'],
+            'email_address'     => ['required', 'email', 'max:255', 'unique:users'],
             'contact_number'    => ['required', 'numeric'],
             'password'          => ['required', 'string', 'max:255','min:6'],
-            'confirm_password'  => ['required_with:password|same:password|min:6'],
+            'gender'            => ['required'],
             'address'           => ['required', 'string', 'max:255'],
             'city'              => ['required', 'string', 'max:255'],
             'country'           => ['required', 'string', 'max:255'],
-            'bio_info'          => ['required', 'string', 'max:255'],
+            'bio_info'          => ['required', 'string', 'max:255']
         ], [
 		    'user_image.required'         => 'Please Upload User Image',
             'user_name.required'          => 'Please Enter UserName',
             'email_address.required'      => 'Please Enter Email Address',
             'contact_number.required'     => 'Please Enter Contact Number',
             'password.required'           => 'Please Enter Password',
-            'confirm_password.required'   => 'Please Enter Confirm Password',
+            'gender.required'             => 'Please Select Gender',
             'address.required'            => 'Please Enter User Address',
             'city.required'               => 'Please Enter City Name',
             'country.required'            => 'Please Enter Country',
@@ -68,8 +71,10 @@ class AdminUserController extends Controller
 		   $user_data['unique_id']=$number;
 		   $user_data['status'] = 1;
 		   $userImage = Helper::unqNum(). $request->file('user_image')->getClientOriginalName();
-		   $request->file('user_image')->move(public_path('asset/userImage'),$userImage);
+		   $request->file('user_image')->move(public_path('admin/asset/userImage'),$userImage);
 		   $user_data['user_image'] = $userImage;
+		   $user_data['password']=md5($_POST['password']);
+		   //echo '<pre>'; print_r($user_data);die;
 		   $data=User::insert($user_data);
 		   echo json_encode(['status' => 'success', 'message' => 'User Information Stored Successfully']);
     }
@@ -81,9 +86,13 @@ class AdminUserController extends Controller
      * @return \Illuminate\Http\Response
      */
 	 
-	public function edit_user_details()
+	public function view_user_details()
 	{
-	   return view('admin.user.edit');	
+	   $data['result']= User::select('*')
+	                        ->where('id',$_GET['id'])
+							->get();
+		//echo '<pre>'; print_r($data);die;
+	   return view('admin.user.view',$data);	
 	}
 	
     public function show($id)

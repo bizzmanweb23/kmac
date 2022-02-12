@@ -22,7 +22,6 @@
 <body>
     <div class="ad-auth-wrapper">
         <div class="ad-auth-box">
-		    <span style="color: red">{{ session('error') }}</span>
             <div class="row align-items-center">
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                     <div class="ad-auth-img">
@@ -43,6 +42,7 @@
                                 <div class="ad-auth-feilds mb-30">
                                     <input type="text" placeholder="Email Address" name="email" class="ad-input @error('email') is-invalid @enderror" value="{{ old('email') }}" autocomplete="email" autofocus />
 									<span class="focus-input100" data-placeholder="Email"></span>
+									<span style="color: red">{{ session('error') }}</span>
 									@error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

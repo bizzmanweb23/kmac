@@ -23,166 +23,38 @@
                     </div>
                 </div>
                 <!-- Table Start -->
+				
                 <div class="row">
                     <div class="col-lg-12">
 						<div class="card">
 							<div class="card-body">
 								<div class="row">
+								    <?php 
+									foreach($result as $data)
+									{
+									?>
 									<div class="col-xl-3 col-lg-6 col-md-6">
 										<div class="prooduct-details-box">                                 
 										  <div class="media">
-											<img src="{{ asset('asset/image/user3.jpg')}}" alt="">
+											<img src="asset/userImage/<?php echo $data->user_image;?>" alt="">
 											<div class="media-body ms-3">
 											  <div class="product-name">
-												<h6><a href="#" title="">Nicole James</a></h6>
+												<h6><a href="#" title=""><?php echo $data->user_name;?></a></h6>
 											  </div>
 											  <div class="price"> 
-                                                <div class="text-muted me-2"><i class="fa fa-phone-alt"> </i> 1800-419-4244</div>
+                                                <div class="text-muted me-2"><i class="fa fa-phone-alt"> </i><?php echo $data->contact_number;?></div>
                                               </div>
                                               <div class="avaiabilty">
-                                                <div class="text-success"><i class="fa fa-envelope"></i> dummyuser@mail.com</div>
-                                                <a href="profile-edit.html" class="text-primary"> View Profile <i class="fas fa-angle-right"></i></a>
+                                                <div class="text-success"><i class="fa fa-envelope"></i><?php echo $data->email_address;?></div>
+                                                <a href="#" class="text-primary" id="viewProfile" rel="<?php echo $data->id;?>"> View Profile <i class="fas fa-angle-right"></i></a>
                                               </div>
 											</div>
 										  </div>
 										</div>
 									</div>
-									<div class="col-xl-3 col-lg-6 col-md-6">
-										<div class="prooduct-details-box">                                 
-											<div class="media">
-												<img src="{{ asset('asset/image/user4.jpg')}}" alt="">
-												<div class="media-body ms-3">
-												  <div class="product-name">
-													<h6><a href="javascript:;" title="">Mike Wood</a></h6>
-												  </div>
-												  <div class="price"> 
-													<div class="text-muted me-2"><i class="fa fa-phone-alt"> </i> 1800-419-4244</div>
-												  </div>
-												  <div class="avaiabilty">
-													<div class="text-success"><i class="fa fa-envelope"></i> dummyuser@mail.com</div>
-													<a href="profile-edit.html" class="text-primary"> View Profile <i class="fas fa-angle-right"></i></a>
-												  </div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-xl-3 col-lg-6 col-md-6">
-										<div class="prooduct-details-box">                                  
-											<div class="media">
-												<img src="{{ asset('asset/image/user3.jpg')}}" alt="">
-												<div class="media-body ms-3">
-												  <div class="product-name">
-													<h6><a href="javascript:;" title="">Mark Doe</a></h6>
-												  </div>
-												  <div class="price"> 
-													<div class="text-muted me-2"><i class="fa fa-phone-alt"> </i> 1800-419-4244</div>
-												  </div>
-												  <div class="avaiabilty">
-													<div class="text-success"><i class="fa fa-envelope"></i> dummyuser@mail.com</div>
-													<a href="profile-edit.html" class="text-primary"> View Profile <i class="fas fa-angle-right"></i></a>
-												  </div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-xl-3 col-lg-6 col-md-6">
-										<div class="prooduct-details-box">                                  
-											<div class="media">
-												<img src="{{ asset('asset/image/user4.jpg')}}" alt="">
-												<div class="media-body ms-3">
-												  <div class="product-name">
-													<h6><a href="javascript:;" title="">John Tock</a></h6>
-												  </div>
-                                                  <div class="price"> 
-													<div class="text-muted me-2"><i class="fa fa-phone-alt"> </i> 1800-419-4244</div>
-												  </div>
-												  <div class="avaiabilty">
-													<div class="text-success"><i class="fa fa-envelope"></i> dummyuser@mail.com</div>
-													<a href="profile-edit.html" class="text-primary"> View Profile <i class="fas fa-angle-right"></i></a>
-												  </div>
-												</div>
-											</div>
-										</div>
-									</div>
-									
-									<div class="col-xl-3 col-lg-6 col-md-6">
-										<div class="prooduct-details-box ad-details-box2">
-										  <div class="media">
-											<img src="{{ asset('asset/image/user3.jpg')}}" alt="">
-											<div class="media-body ms-3">
-											  <div class="product-name">
-												<h6><a href="javascript:;" title="">Nicole James</a></h6>
-											  </div>
-                                              <div class="price"> 
-                                                <div class="text-muted me-2"><i class="fa fa-phone-alt"> </i> 1800-419-4244</div>
-                                              </div>
-                                              <div class="avaiabilty">
-                                                <div class="text-success"><i class="fa fa-envelope"></i> dummyuser@mail.com</div>
-                                                <a href="profile-edit.html" class="text-primary"> View Profile <i class="fas fa-angle-right"></i></a>
-                                              </div>
-											</div>
-										  </div>
-										</div>
-									</div>
-									<div class="col-xl-3 col-lg-6 col-md-6">
-										<div class="prooduct-details-box ad-details-box2">
-											<div class="media">
-												<img src="{{ asset('asset/image/user4.jpg')}}" alt="">
-												<div class="media-body ms-3">
-												  <div class="product-name">
-													<h6><a href="javascript:;" title="">Mike Wood</a></h6>
-												  </div>
-                                                  <div class="price"> 
-													<div class="text-muted me-2"><i class="fa fa-phone-alt"> </i> 1800-419-4244</div>
-												  </div>
-												  <div class="avaiabilty">
-													<div class="text-success"><i class="fa fa-envelope"></i> dummyuser@mail.com</div>
-													<a href="profile-edit.html" class="text-primary"> View Profile <i class="fas fa-angle-right"></i></a>
-												  </div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-xl-3 col-lg-6 col-md-6">
-										<div class="prooduct-details-box ad-details-box2">
-											<div class="media">
-												<img src="{{ asset('asset/image/user3.jpg')}}" alt="">
-												<div class="media-body ms-3">
-												  <div class="product-name">
-													<h6><a href="javascript:;" title="">Mark Doe</a></h6>
-												  </div>
-												  <div class="price"> 
-													<div class="text-muted me-2"><i class="fa fa-phone-alt"> </i> 1800-419-4244</div>
-												  </div>
-												  <div class="avaiabilty">
-													<div class="text-success"><i class="fa fa-envelope"></i> dummyuser@mail.com</div>
-													<a href="profile-edit.html" class="text-primary"> View Profile <i class="fas fa-angle-right"></i></a>
-												  </div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-xl-3 col-lg-6 col-md-6">
-										<div class="prooduct-details-box ad-details-box2">
-											<div class="media">
-												<img src="{{ asset('asset/image/user4.jpg')}}" alt="">
-												<div class="media-body ms-3">
-												  <div class="product-name">
-													<h6><a href="javascript:;" title="">John Tock</a></h6>
-												  </div>
-                                                  <div class="price"> 
-													<div class="text-muted me-2"><i class="fa fa-phone-alt"> </i> 1800-419-4244</div>
-												  </div>
-												  <div class="avaiabilty">
-													<div class="text-success"><i class="fa fa-envelope"></i> dummyuser@mail.com</div>
-													<a href="{{ route('admin.edit_user_details') }}" class="text-primary"> View Profile <i class="fas fa-angle-right"></i></a>
-												  </div>
-												</div>
-											</div>
-										</div>
-									</div>
-									
-									
+									<?php
+									}
+									?>							
 								</div>
 								<div class="ad-load-btn">
 									<button class="btn btn-primary squer-btn mt-2 mr-2" data-original-title="" title=""><i class="fa fa-spin fa-spinner mr-2"></i>Load More</button>
@@ -196,7 +68,7 @@
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <form method="post" id="user_form">
+            <form method="post" enctype="multipart/form-data" id="user_form">
 			@csrf
             <div class="modal-header">
               <h5 class="modal-title h4" id="myLargeModalLabel">Add users</h5>
@@ -208,9 +80,9 @@
                 <div class="container">
                     <div class="row add-profile-user">
                         <div class="col-md-1"></div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 upload">
 						    <img src="{{ asset('asset/image/imageicon.png') }}" alt="User Image" class="rounded-circle">
-                                    <label for="emp_image" class="edit">
+                                    <label for="user_image" class="edit">
                                         <i class="fas fa-pencil-alt"></i>
                                         <input type="file" style="display: none" name="user_image" id="user_image">
                                         <span id="user_image_error" style="color: red"></span>
@@ -251,9 +123,14 @@
                         </div>
                         <div class="col-md-6">
                            <div class="form-group">
-                               <label class="col-form-label"> Confirm Password</label>
-                               <input class="form-control" type="password" placeholder="123456" name="confirm_password" id="confirm_password">
-							   <span id="confirm_password_error" style="color: red"></span>
+                               <label for="gender">Gender:</label>
+                                            <select class="form-control" id="gender" name="gender">
+                                                <option value="">--select--</option>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                            <span id="gender_error" style="color: red"></span>
                            </div>
                         </div>
                     </div>
@@ -303,6 +180,82 @@
           </div>
         </div>
       </div>
+<!-- View User Modal -->
+<div id="viewUserModal" class="modal fade">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+		   <div class="row">
+                    <div class="col-sm-2"></div>
+                <div class="col-xl-8">
+                  <div class="card"><grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension>
+                    <div class="card-header">
+                      <h4 class="card-title mb-0">My Profile</h4>
+                      <div class="card-options"><a class="card-options-collapse" href="javascript:;" data-bs-toggle="card-collapse" data-bs-original-title="" title=""><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="javascript:;" data-bs-toggle="card-remove" data-bs-original-title="" title=""><i class="fe fe-x"></i></a></div>
+                    </div>
+                    <div class="card-body viewDetails">
+                      <form>
+						<div class="profile-title">
+							<div class="media ad-profile2-img">                        
+								<img alt="" src="{{ asset('asset/image/user.jpg')}}">
+							  <div class="media-body">
+								<h5 class="mb-1">MARK JECNO</h5>
+								<p>DESIGNER</p>
+							  </div>
+							</div>
+						</div>
+                     
+                        <div class="mb-3">
+                          <label class="form-label">Bio</label>
+                          <textarea class="form-control" rows="5" spellcheck="false">On the other hand, we denounce with righteous indignation</textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Email-Address</label>
+                                    <input class="form-control" placeholder="your-email@domain.com" value="dummyuser@mail.com" data-bs-original-title="" title="">
+                                  </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Password</label>
+                                    <input class="form-control" type="password" value="*********" data-bs-original-title="" title="">
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Website</label>
+                                    <input class="form-control" value="bizzmanweb.sg" data-bs-original-title="" title="">
+                                  </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Phone</label>
+                                    <input class="form-control" placeholder="Enter Phone No" value="1800 419 4244" data-bs-original-title="" title="">
+                                  </div>
+                            </div>
+                        </div>
+                     
+                     
+                     
+                        <div class="form-footer">
+                            <button class="btn btn-danger squer-btn" data-bs-original-title="" title=""> <i class="fa fa-times"></i> Cancel</button>
+                            <button type="button" class="btn btn-primary squer-btn" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-edit"></i> Edit</button>
+                         
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+             
+             
+              </div>
+		    
+		</div>
+	</div>
+</div>
+<!-- End User View Modal -->
 <div id="user_loder" style="display: none">
         @include('admin.loader.index')
     </div>

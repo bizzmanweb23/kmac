@@ -17,7 +17,9 @@
     }
 
     .mainLoding {
-        content: url("{{ asset('asset/image/loader-10s-200px.gif') }}");
+        content: url("{{ asset('asset/image/loader.gif') }}");
+		height:100px;
+		width:100px;
     }
 
     .Pageloading:after {
