@@ -46,7 +46,7 @@
                                               </div>
                                               <div class="avaiabilty">
                                                 <div class="text-success"><i class="fa fa-envelope"></i><?php echo $data->email_address;?></div>
-                                                <a href="#" class="text-primary" id="viewProfile" rel="<?php echo $data->id;?>"> View Profile <i class="fas fa-angle-right"></i></a>
+                                                <button type="button" class="btn btn-primary squer-btn" id="viewUserProfile" rel="<?php echo $data->id;?>"> View Profile <i class="fas fa-angle-right"></i></button>
                                               </div>
 											</div>
 										  </div>
@@ -181,84 +181,82 @@
         </div>
       </div>
 <!-- View User Modal -->
-<div id="viewUserModal" class="modal fade">
+<div id="viewUserModal" class="modal fade bd-example-modal-lg">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
-		   <div class="row">
-                    <div class="col-sm-2"></div>
+		    <div class="row">
+                <div class="col-sm-2"></div>
                 <div class="col-xl-8">
-                  <div class="card"><grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension>
-                    <div class="card-header">
-                      <h4 class="card-title mb-0">My Profile</h4>
-                      <div class="card-options"><a class="card-options-collapse" href="javascript:;" data-bs-toggle="card-collapse" data-bs-original-title="" title=""><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="javascript:;" data-bs-toggle="card-remove" data-bs-original-title="" title=""><i class="fe fe-x"></i></a></div>
+                    <div class="card"><grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension>
+                        <div class="card-header">
+                            <h4 class="card-title mb-0">My Profile</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <div class="card-options"><a class="card-options-collapse" href="javascript:;" data-bs-toggle="card-collapse" data-bs-original-title="" title=""><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="javascript:;" data-bs-toggle="card-remove" data-bs-original-title="" title=""><i class="fe fe-x"></i></a></div>
+                            </div>
+                            <div class="card-body">
+                                <div id="viewDetails">
+                                    <form method="post" enctype="multipart/form-data" id="user_form">
+			                            @csrf
+						                <div class="profile-title">
+							                <div class="media ad-profile2-img">                        
+								                <img alt="" src="{{ asset('asset/image/user.jpg')}}">
+                    						    <div class="media-body">
+								                    <h5 class="mb-1">MARK JECNO</h5>
+								                    <p>DESIGNER</p>
+							                    </div>
+							                </div>
+						                </div>                     
+                                        <div class="mb-3">
+                                            <label class="form-label">Bio</label>
+                                            <textarea class="form-control" rows="5" spellcheck="false">On the other hand, we denounce with righteous indignation</textarea>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Email-Address</label>
+                                                    <input class="form-control" placeholder="your-email@domain.com" value="dummyuser@mail.com" data-bs-original-title="" title="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Password</label>
+                                                    <input class="form-control" type="password" value="*********" data-bs-original-title="" title="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Website</label>
+                                                    <input class="form-control" value="bizzmanweb.sg" data-bs-original-title="" title="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Phone</label>
+                                                    <input class="form-control" placeholder="Enter Phone No" value="1800 419 4244" data-bs-original-title="" title="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-footer">
+                                            <button class="btn btn-danger squer-btn" data-bs-original-title="" title=""> <i class="fa fa-times"></i> Cancel</button>
+                                            <button type="button" class="btn btn-primary squer-btn" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-edit"></i> Edit</button>
+                                        </div>
+                                    </form>
+					            </div>
+                            </div>
                     </div>
-                    <div class="card-body viewDetails">
-                      <form>
-						<div class="profile-title">
-							<div class="media ad-profile2-img">                        
-								<img alt="" src="{{ asset('asset/image/user.jpg')}}">
-							  <div class="media-body">
-								<h5 class="mb-1">MARK JECNO</h5>
-								<p>DESIGNER</p>
-							  </div>
-							</div>
-						</div>
-                     
-                        <div class="mb-3">
-                          <label class="form-label">Bio</label>
-                          <textarea class="form-control" rows="5" spellcheck="false">On the other hand, we denounce with righteous indignation</textarea>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Email-Address</label>
-                                    <input class="form-control" placeholder="your-email@domain.com" value="dummyuser@mail.com" data-bs-original-title="" title="">
-                                  </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Password</label>
-                                    <input class="form-control" type="password" value="*********" data-bs-original-title="" title="">
-                                  </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Website</label>
-                                    <input class="form-control" value="bizzmanweb.sg" data-bs-original-title="" title="">
-                                  </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Phone</label>
-                                    <input class="form-control" placeholder="Enter Phone No" value="1800 419 4244" data-bs-original-title="" title="">
-                                  </div>
-                            </div>
-                        </div>
-                     
-                     
-                     
-                        <div class="form-footer">
-                            <button class="btn btn-danger squer-btn" data-bs-original-title="" title=""> <i class="fa fa-times"></i> Cancel</button>
-                            <button type="button" class="btn btn-primary squer-btn" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-edit"></i> Edit</button>
-                         
-                        </div>
-                      </form>
-                    </div>
-                  </div>
                 </div>
-             
-             
-              </div>
-		    
+            </div>
 		</div>
 	</div>
 </div>
 <!-- End User View Modal -->
-<div id="user_loder" style="display: none">
+<!--<div id="user_loder" style="display: none">
         @include('admin.loader.index')
-    </div>
+    </div> -->
 @section('javascript')
 @include('admin.js.user')
 @endsection

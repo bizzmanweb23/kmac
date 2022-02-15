@@ -1,133 +1,40 @@
-@extends('admin.layout.dashboard')
-
-@section('content')	
-        <!-- Container Start -->
-        <div class="page-wrapper">
-            <div class="main-content">
-                <!-- Page Title Start -->
-                <div class="row">
-                    <div class="col xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="page-title-wrapper">
-                            <div class="page-title-box">
-                                <h4 class="page-title">User Profile</h4>
-                            </div>
-                            <div class="breadcrumb-list">
-                                <ul>
-                                    <li class="breadcrumb-link">
-                                        <a href="{{ route('admin.dashboard.index')}}"><i class="fas fa-home mr-2"></i>Dashboard</a>
-                                    </li>
-                                    <li class="breadcrumb-link active">User Profile</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Products view Start -->
-				<div class="row">
-                    <div class="col-sm-2"></div>
-                <div class="col-xl-8">
-                  <div class="card"><grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension>
-                    <div class="card-header">
-                      <h4 class="card-title mb-0">My Profile</h4>
-                      <div class="card-options"><a class="card-options-collapse" href="javascript:;" data-bs-toggle="card-collapse" data-bs-original-title="" title=""><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="javascript:;" data-bs-toggle="card-remove" data-bs-original-title="" title=""><i class="fe fe-x"></i></a></div>
-                    </div>
-                    <div class="card-body viewDetails">
-                      <form>
-						<div class="profile-title">
-							<div class="media ad-profile2-img">                        
-								<img alt="" src="{{ asset('asset/image/user.jpg')}}">
-							  <div class="media-body">
-								<h5 class="mb-1">MARK JECNO</h5>
-								<p>DESIGNER</p>
-							  </div>
-							</div>
-						</div>
-                     
-                        <div class="mb-3">
-                          <label class="form-label">Bio</label>
-                          <textarea class="form-control" rows="5" spellcheck="false">On the other hand, we denounce with righteous indignation</textarea>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Email-Address</label>
-                                    <input class="form-control" placeholder="your-email@domain.com" value="dummyuser@mail.com" data-bs-original-title="" title="">
-                                  </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Password</label>
-                                    <input class="form-control" type="password" value="*********" data-bs-original-title="" title="">
-                                  </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Website</label>
-                                    <input class="form-control" value="bizzmanweb.sg" data-bs-original-title="" title="">
-                                  </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Phone</label>
-                                    <input class="form-control" placeholder="Enter Phone No" value="1800 419 4244" data-bs-original-title="" title="">
-                                  </div>
-                            </div>
-                        </div>
-                     
-                     
-                     
-                        <div class="form-footer">
-                            <button class="btn btn-danger squer-btn" data-bs-original-title="" title=""> <i class="fa fa-times"></i> Cancel</button>
-                            <button type="button" class="btn btn-primary squer-btn" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-edit"></i> Edit</button>
-                         
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-             
-             
-              </div>
-    <!-- this is large modal -->
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-  
-            <div class="modal-header">
-              <h5 class="modal-title h4" id="myLargeModalLabel">Add users</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
+ <form method="post" enctype="multipart/form-data" id="editUser_form">
+			@csrf
+			<input type="hidden" id="editUserId" value="<?php echo $result[0]->id;?>">
             <div class="modal-body">
                 <div class="container">
                     <div class="row add-profile-user">
                         <div class="col-md-1"></div>
-                        <div class="col-md-3">
-                            <img src="assets/images/user3.jpg" alt="" class="rounded-circle ">
-                            <i class="fa fa-edit"></i>
+                        <div class="col-md-3 upload">
+						    <img src="asset/userImage/<?php echo $result[0]->user_image;?>" alt="User Image" class="rounded-circle">
+                                    <label for="user_image" class="edit">
+                                        <i class="fas fa-pencil-alt"></i>
+                                        <input type="file" style="display: none" name="user_image" id="user_image">
+                                        <span id="user_image_error" style="color: red"></span>
+                                    </label>
                         </div>
                         <div class="col-md-8">
                            <div class="form-group">
-                               <label for="member-name" class="col-form-label">Your Name</label>
-                               <input class="form-control" type="text" placeholder="Enter Your Name" id="member-name">
+                               <label for="user_name" class="col-form-label">Your Name</label>
+                               <input class="form-control" type="text" placeholder="Enter Your Name" value="<?php echo $result[0]->user_name;?>" id="user-name" name="user_name">
+							   <span id="user_name_error" style="color: red"></span>
                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                            <div class="form-group">
-                               <label for="member-email" class="col-form-label">Your Email</label>
-                               <input class="form-control" type="email" placeholder="Enter Your Email" id="member-email">
+                               <label for="email_address" class="col-form-label">Your Email</label>
+                               <input class="form-control" type="email" placeholder="Enter Your Email" value="<?php echo $result[0]->email_address;?>" id="email_address" name="email_address">
+							   <span id="email_address_error" style="color: red"></span>
                            </div>
                         </div>
                        
                         <div class="col-md-6">
                            <div class="form-group">
-                               <label for="another-number" class="col-form-label">Contact Number</label>
-                               <input class="form-control" type="text" placeholder="Contact Number" id="another-number">
+                               <label for="contact_number" class="col-form-label">Contact Number</label>
+                               <input class="form-control" type="text" placeholder="Contact Number" value="<?php echo $result[0]->contact_number;?>" id="contact_number" name="contact_number">
+							   <span id="contact_number_error" style="color: red"></span>
                            </div>
                         </div>
                     </div>
@@ -135,59 +42,63 @@
                         <div class="col-md-6">
                            <div class="form-group">
                                <label class="col-form-label">Password</label>
-                               <input class="form-control" type="password" placeholder="123456">
+                               <input class="form-control" type="password" placeholder="123456" value="<?php echo $result[0]->password;?>" name="password" id="password">
+							   <span id="paswword_error" style="color: red"></span>
                            </div>
                         </div>
                         <div class="col-md-6">
                            <div class="form-group">
-                               <label class="col-form-label"> Confirm Password</label>
-                               <input class="form-control" type="password" placeholder="123456">
+                               <label for="gender">Gender:</label>
+                                            <select class="form-control" id="gender" name="gender">
+                                                <option value="">--select--</option>
+                                                <option <?php if($result[0]->gender == 'Male'){ echo 'selected';}?> value="Male">Male</option>
+                                                <option <?php if($result[0]->gender == 'Female'){ echo 'selected';}?>value="Female">Female</option>
+                                                <option <?php if($result[0]->gender == 'Other'){ echo 'Selected';}?> value="Other">Other</option>
+                                            </select>
+                                            <span id="gender_error" style="color: red"></span>
+                           </div>
+                        </div>
+                    </div>
+					<div class="row">
+                        <div class="col-md-12">
+                           <div class="form-group">
+                               <label class="col-form-label">Address</label>
+                               <textarea class="form-control" type="text" placeholder="Address" name="address" id="address"><?php echo $result[0]->address;?></textarea>
+							   <span id="address_error" style="color: red"></span>
+                           </div>
+                        </div>
+                    </div>
+					<div class="row">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                               <label class="col-form-label">City</label>
+                               <input class="form-control" type="text" placeholder="City" value="<?php echo $result[0]->city;?>" name="city" id="city">
+							   <span id="city_error" style="color: red"></span>
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group">
+                               <label class="col-form-label"> Country</label>
+                               <input class="form-control" type="text" placeholder="Country" name="country" value="<?php echo $result[0]->country;?>" id="country">
+							   <span id="country_error" style="color: red"></span>
+                           </div>
+                        </div>
+                    </div>
+					<div class="row">
+                        <div class="col-md-12">
+                           <div class="form-group">
+                               <label class="col-form-label">Bio</label>
+                               <textarea class="form-control" type="text" placeholder="On the other hand, we denounce with righteous indignation" name="bio_info" id="bio_info"><?php echo $result[0]->bio_info;?></textarea>
+							   <span id="bio_info_error" style="color: red"></span>
                            </div>
                         </div>
                     </div>
                 </div>
-          
-
-             <div class="card-body">
-                <ul class="nav nav-tabs" id="myTab2" role="tablist">
-                
-                  <li class="nav-item">
-                    <a class="nav-link active" id="profile-tab19" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Customers</a>
-                  </li>
-                
-                </ul>
-                <div class="tab-content ad-content2" id="myTabContent">
-                 
-                  <div class="tab-pane fade active show" id="profile" role="tabpanel">
-                   <div class="row">
-                       <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="city" class="col-form-label">Website</label>
-                            <select class="select2 form-control" id="Website">
-                                  <option value="All">All</option>
-
-                            </select>
-                        </div>
-                       </div>
-                   </div>
-                  </div>
-                
-                </div>
-            </div>
             </div>
             <div class="modal-footer">
                 <div class="form-group mb-0">
                     <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
-                    <button class="btn btn-primary" type="button">Save</button>
+                    <button class="btn btn-primary" type="button" id="edit_user_details">Submit</button>
                 </div>
             </div>
-          </div>
-        </div>
-      </div>
-<div id="user_loder" style="display: none">
-        @include('admin.loader.index')
-    </div>
-@section('javascript')
-@include('admin.js.user')
-@endsection
-@endsection
+			</form>

@@ -92,7 +92,36 @@ class AdminUserController extends Controller
 	                        ->where('id',$_GET['id'])
 							->get();
 		//echo '<pre>'; print_r($data);die;
-	   return view('admin.user.view',$data);	
+	   return view('admin.user.edit',$data);	
+	}
+	
+	public function edit_user_details(Request $request)
+	{
+		$user_updatedata = $request->validate([
+            'user_name'         => ['required', 'string'],
+            'email_address'     => ['required', 'email', 'max:255'],
+            'contact_number'    => ['required', 'numeric'],
+            'password'          => ['required', 'string', 'max:255','min:6'],
+            'gender'            => ['required'],
+            'address'           => ['required', 'string', 'max:255'],
+            'city'              => ['required', 'string', 'max:255'],
+            'country'           => ['required', 'string', 'max:255'],
+            'bio_info'          => ['required', 'string', 'max:255']
+        ], [
+            'user_name.required'          => 'Please Enter UserName',
+            'email_address.required'      => 'Please Enter Email Address',
+            'contact_number.required'     => 'Please Enter Contact Number',
+            'password.required'           => 'Please Enter Password',
+            'gender.required'             => 'Please Select Gender',
+            'address.required'            => 'Please Enter User Address',
+            'city.required'               => 'Please Enter City Name',
+            'country.required'            => 'Please Enter Country',
+            'bio_info.required'           => 'Please Enter Your Bio',
+        ]);
+		   $user_updatedata['password']=md5($_POST['password']);
+		   //echo '<pre>'; print_r($user_data);die;
+		   $data=User::where('id',$_POST['id'])->update($user_updatedata);
+		   echo json_encode(['status' => 'success', 'message' => 'User Information Updated Successfully']);
 	}
 	
     public function show($id)

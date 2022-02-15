@@ -385,6 +385,7 @@
 <div id="editEmployeeModal" class="modal fade">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
+                <div id="show_employeeDetails">		
 				    <form method="post" enctype="multipart/form-data" id="employee_form">
 			        @csrf
                     <div class="modal-header">
@@ -665,6 +666,7 @@
                         </div>
                     </div>
 					</form>
+					</div>
                 </div>
 			</div>
 		</div>			

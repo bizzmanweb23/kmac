@@ -34,13 +34,15 @@ Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function
         'index' => 'dashboard.index'
     ]);
 	
-	//Route::any('/edit_user_details', [AdminUserController::class, 'edit_user_details'])->name('edit_user_details');
+	Route::any('/edit_user_details', [AdminUserController::class, 'edit_user_details'])->name('edit_user_details');
 	Route::any('/view_user_details', [AdminUserController::class, 'view_user_details'])->name('view_user_details');
 	Route::resource('user', AdminUserController::class)->names([
         'index' => 'user.index',
         'store' => 'user.store'
     ]);
 	
+	Route::any('/view_employee_details', [AdminEmployeeController::class, 'view_employee_details'])->name('view_employee_details');
+	Route::any('/edit_employee_details', [AdminEmployeeController::class, 'edit_employee_details'])->name('edit_employee_details');
 	Route::resource('employee', AdminEmployeeController::class)->names([
         'index' => 'employee.index',
         'store' => 'employee.store'

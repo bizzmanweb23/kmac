@@ -100,4 +100,78 @@ class AdminEmployeeController extends Controller
 		   $data=Employee::insert($employee_data);
 		   echo json_encode(['status' => 'success', 'message' => 'Employee Information Stored Successfully']);
 	}
+	
+	public function view_employee_details()
+	{
+		$data['result']=Employee::select('*')
+		                        ->where('id',$_GET['id'])
+								->get();
+		//echo '<pre>'; print_r($data);die;
+		return view('admin.employee.edit',$data);
+	}
+	
+	public function edit_employee_details(Request $request)
+	{
+		$empImage1=0;
+	  $empImage2=0;
+	  $id=$request->id;
+	  $employee_data = $request->validate([
+            'member_name'           => ['required', 'string','max:255'],
+            'jobPosition'           => ['required', 'string', 'max:255'],
+            'mobile_number'         => ['required', 'numeric'],
+            'department'            => ['required', 'string', 'max:255'],
+            'manager'               => ['required','string', 'max:255'],
+            'email_address'         => ['required', 'email', 'max:255'],
+            'password'              => ['required', 'string', 'min:6'],
+            'address'               => ['required', 'string', 'max:255'],
+            'country'               => ['required', 'string', 'max:255'],
+            'emaiAddress'           => ['required', 'email', 'max:255'],
+            'Identification_number' => ['required', 'string', 'max:255'],
+            'contact_number'        => ['required', 'numeric'],
+            'passport_number'       => ['required', 'string','max:255'],
+            'bank_account'          => ['required', 'string','max:255'],
+            'gender'                => ['required', 'string','max:255'],
+            'work_distance'         => ['required', 'string','max:255'],
+            'date_of_birth'         => ['required', 'string','max:255'],
+            'place_of_birth'        => ['required', 'string','max:255'],
+            'country_of_birth'      => ['required', 'string','max:255'],
+            'marital_status'        => ['required', 'string','max:255'],
+            'id_name'               => ['required', 'string','max:255'],
+            'id_number'             => ['required', 'string','max:12'],
+            'certification_level'   => ['required', 'string','max:255'],
+            'field_of_study'        => ['required', 'string','max:255'],
+            'school'                => ['required', 'string','max:255'],
+        ], [
+            'member_name.required'            => 'Please Enter Employee Name',
+            'jobPosition.required'            => 'Please Select Job Position',
+            'mobile_number.required'          => 'Please Enter Contact Number',
+            'department.required'             => 'Please Select department',
+            'manager.required'                => 'Please Select Manager',
+            'email_address.required'          => 'Please Enter Email Address',
+            'password.required'               => 'Please Enter Password',
+            'address.required'                => 'Please Enter Address',
+            'country.required'                => 'Please Enter Country',
+            'emaiAddress.required'            => 'Please Enter Email Address',
+            'Identification_number.required'  => 'Please Enter Indentification Number',
+            'contact_number.required'         => 'Please Enter Contact Number',
+            'passport_number.required'        => 'Please Enter Passport Number',
+            'bank_account.required'           => 'Please Enter Bank Account',
+            'gender.required'                 => 'Please Select Gender',
+            'work_distance.required'          => 'Please Enter work Distance',
+            'date_of_birth.required'          => 'Please select Date Of Birth',
+            'place_of_birth.required'         => 'Please Enter Place Of Birth',
+            'country_of_birth.required'       => 'Please Enter Place Of Birth',
+            'marital_status.required'         => 'Please Select Marital Status',
+            'id_name.required'                => 'Please Enter ID Name',
+            'id_number.required'              => 'Please Enter ID Number',
+            'certification_level.required'    => 'Please Select Certification Level',
+            'field_of_study.required'         => 'Please Enter Field Of Study',
+            'school.required'                 => 'Please Enter School Name',
+        ]);
+		    
+           //echo '<pre>'; print_r($employee_data);die;		   
+		   $data=Employee::where('id',$id)->update($employee_data);
+		   echo json_encode(['status' => 'success', 'message' => 'Employee Details updated Succesfully']);
+	}
+	
 }
