@@ -48,9 +48,9 @@ class AdminEmployeeController extends Controller
             'id_name'               => ['required', 'string','max:255'],
             'id_number'             => ['required', 'string','max:12'],
             'id_file'              => ['required'],
-            'certification_level'   => ['required', 'string','max:255'],
-            'field_of_study'        => ['required', 'string','max:255'],
-            'school'                => ['required', 'string','max:255'],
+            'certification_level'   => ['string','max:255'],
+            'field_of_study'        => ['string','max:255'],
+            'school'                => ['string','max:255'],
         ], [
 		    'employee_image.required'         => 'Please Upload User Image',
             'member_name.required'            => 'Please Enter Employee Name',
@@ -76,9 +76,6 @@ class AdminEmployeeController extends Controller
             'id_name.required'                => 'Please Enter ID Name',
             'id_number.required'              => 'Please Enter ID Number',
             'id_file.required'               => 'Please Upload ID File',
-            'certification_level.required'    => 'Please Select Certification Level',
-            'field_of_study.required'         => 'Please Enter Field Of Study',
-            'school.required'                 => 'Please Enter School Name',
         ]);
 		   $unique_id = Employee::orderBy('id', 'desc')->first();
            $number = str_replace('KMACE', '', $unique_id ? $unique_id->unique_id  : 0);
