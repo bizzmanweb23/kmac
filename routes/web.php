@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminEmployeeController;
+use App\Http\Controllers\Admin\AdminInventoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,6 +47,10 @@ Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function
 	Route::resource('employee', AdminEmployeeController::class)->names([
         'index' => 'employee.index',
         'store' => 'employee.store'
+    ]);
+	Route::resource('inventory', AdminInventoryController::class)->names([
+        'index' => 'inventory.index',
+        'store' => 'inventory.store'
     ]);
 
 });
