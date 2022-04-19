@@ -9,6 +9,7 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
     <meta name="MobileOptimized" content="320">
+    
     <!--Start Style -->
     <link rel="stylesheet" type="text/css" href="{{ asset('asset/css/fonts.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('asset/css/bootstrap.min.css') }}">
@@ -20,6 +21,9 @@
     <link rel="stylesheet" href="{{ asset('asset/css/daterangepicker.css') }}">
     <!-- Favicon Link -->
     <link rel="shortcut icon" type="image/png" href="{{ asset('asset/image/favicon.png') }}">
+    <script src="{{ asset('js/jquery.js') }}"></script>
+       <script src="{{ asset('js/dataTables.min.js') }}"></script>
+
 </head>
 
 <body>
@@ -171,27 +175,80 @@
                                Employee Management
                             </span>
                         </a>
-                    </li>
-					  <li>
-                        <a href="{{route ('admin.inventory.index')}}" class="active">
+                    </li> 
+ 
+                    <li class="has-sub-menu active">
+                        <a href="javascript:void(0);" class="active">
                             <span class="icon-menu feather-icon">
-							    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shelves"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                                
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                             </span>
                             <span class="menu-text">
-                               Inventory Management
+                                Inventory
+                            </span>
+                        </a>
+                        <ul class="sub-menu menu-show" style="display: block;">
+                            <li>
+                            <a href="{{ route('inventory-master')}}" class="active"> 
+                            <span class="menu-text">
+                               Assets
+                            </span>
+                        </a>
+                            </li>
+                            <li>
+                                <a href="{{route ('admin.inventory.index')}}" class="active"> 
+                            <span class="menu-text">
+                               Item management
+                            </span>
+                        </a> 
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="has-sub-menu active">
+                        <a href="javascript:void(0);" class="active">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            </span>
+                            <span class="menu-text">
+                                Stocks
+                            </span>
+                        </a>
+                        <ul class="sub-menu menu-show" style="display: block;">
+                            <li>
+                                <a href="{{route ('stocks-in')}}">
+                                    
+                                    </span>
+                                    <span class="menu-text">
+                                        Stock In
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route ('stocks-out')}}">
+                                     
+                                    </span>
+                                    <span class="menu-text">
+                                        Stock Out
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li> 
+                     <li>
+                        <a href="{{route ('admin.attendance')}}" class="active">
+                            <span class="icon-menu feather-icon">
+                              <i class="fa fa-users"></i>
+                            </span>
+                            <span class="menu-text">
+                               Attendance
                             </span>
                         </a>
                     </li>
-            
-              
-               
                 </ul>
+
             </div>
-        </aside>
-		
-		@yield('content')
-		
+        </aside> 
+		@yield('content') 
 		<div class="ad-footer-btm">
 				    <div class="copyright text-center text-sm text-muted text-lg-start">
                         © <script>
@@ -210,9 +267,10 @@
 	
 	
     <!-- Script Start -->
-	<script src="{{ asset('asset/js/jquery-3.3.1.min.js') }}"></script>
+	 
     <script src="{{ asset('js/app.js') }}"></script>
-	<script src="{{ asset('asset/js/jquery.min.js') }}"></script>
+<!--	 <script src="{{ asset('asset/js/jquery-3.3.1.min.js') }}"></script>
+        <script src="{{ asset('asset/js/jquery.min.js') }}"></script>-->
     <script src="{{ asset('asset/js/popper.min.js') }}"></script>
     <script src="{{ asset('asset/js/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('asset/js/swiper.min.js') }}"></script>
@@ -225,7 +283,15 @@
     <script src="{{ asset('asset/js/custom.js') }}"></script>
     <script src="{{ asset('asset/js/moment.min.js') }}"></script>
     <script src="{{ asset('asset/js/daterangepicker.js') }}"></script>
-	
+	<script type="text/javascript">
+     $(document).ready(function(){
+        
+        $(document).on('click','#inv',function(){
+            alert();
+            $('.inv-list').slideToggle();
+        });
+     });   
+    </script>
 	@yield('javascript')
 </body>
 

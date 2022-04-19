@@ -17,7 +17,7 @@ class AdminEmployeeController extends Controller
      */
     public function index()
     {
-		$data['result']=Employee::select('*')->get();
+	$data['result']=Employee::select('*')->get();
         return view('admin.employee.index',$data);
     }
 	

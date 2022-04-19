@@ -39,7 +39,7 @@ class CINDrawing {
      * @param string filename
      * @param CINColor $color
      */
-    public function __construct($filename = null, CINColor $color) {
+    public function __construct($filename, CINColor $color) {
         $this->im = null;
         $this->setFilename($filename);
         $this->color = $color;
