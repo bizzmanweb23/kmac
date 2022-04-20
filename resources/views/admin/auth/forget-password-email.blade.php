@@ -4,4 +4,4 @@ You can reset password Using below Token No:<br/>
 
 Reset Password<br/>
 
-Token no is: {{ $token }}
+Code no is: {{ $code }}

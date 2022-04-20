@@ -33,11 +33,8 @@ class EmpController extends Controller
     }
 
     public function tasks()
-    {
-        
-          
-        $result = DB::table('tasks')->get(); 
-
+    { 
+        $result = DB::table('tasks')->get();  
         return response()->json([
             'SuccessCode'=> 200,
             'Massage'=> 'All tasks',

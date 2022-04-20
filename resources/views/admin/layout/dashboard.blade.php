@@ -235,7 +235,7 @@
                         </ul>
                     </li> 
                      <li>
-                        <a href="{{route ('admin.attendance')}}" class="active">
+                        <a href="#" class="active">
                             <span class="icon-menu feather-icon">
                               <i class="fa fa-users"></i>
                             </span>
